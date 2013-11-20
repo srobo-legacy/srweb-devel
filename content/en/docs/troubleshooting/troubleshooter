@@ -1,0 +1,7 @@
+//TITLE: Troubleshooter
+//DESCRIPTION: Helps you troubleshoot your code
+//KEYWORDS:	troubleshooting, faq, problems, help, hardware, kit
+//CONTENT_TYPE: markdown
+
+<div id="troubleshooter"></div>
+<button id="resetbtnattop" onclick="clearedReset()">Troubleshoot another issue</button>

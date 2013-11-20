@@ -1,0 +1,314 @@
+askiffixed_question = {
+	"question": "Has this fixed your problem??",
+	"answers":
+	[
+		{
+			"answer": "Yes",
+		},
+		{
+			"answer": "No",
+		}
+	]
+};
+
+
+
+
+questions = {
+	"":
+	{
+		"question": "Which piece of kit seems to be the issue?",
+		"answers":
+		[
+			/*{
+				"answer": "Power Board",
+				"message": "Sorry, this section doesn't exist yet, consider solving a different problem for the moment.",
+				"nextquestion": ""
+			},*/
+
+			{
+				"answer": "Motor Board and Motors",
+				"nextquestion": "motor-board-function-check"
+			},
+			{
+				"answer": "Servo Board and Servos",
+				"nextquestion": "servo-board-function-check"
+			},
+			/*{
+				"answer": "IO Board",
+				"message": "Sorry, this section doesn't exist yet, consider solving a different problem for the moment.",
+				"nextquestion": ""
+			},*/
+			{
+				"answer": "Batteries",
+				"message": "Batteries are dangerous, don't do anything risky!!<br />Sorry, this section doesn't exist yet, consider solving a different problem for the moment.",
+				"nextquestion": ""
+			},
+			/*{
+				"answer": "Everything!",
+				"message": "Sorry, this section doesn't exist yet, consider solving a different problem for the moment.",
+				"nextquestion": ""
+			}*/
+		]
+	},
+
+	// motor
+
+	"motor-board-function-check":
+	{
+		"question": "Choose the option that best describes your situation<br/><img src=\"https://www.studentrobotics.org/images/content/kit/motor_and_camcon.png\" />",
+		"answers":
+		[
+			{
+				"answer": "My Motor Board or Motor has started smoking!",
+				"message": "You should immediatly shut off the power supply to the Motor Board, and stay away from the damaged components.<br />Ensure your room is well ventilated so you arn't poisoned, and contact a member of staff.<br/>Do <b>not</b> take risks with your life in an attempt to preserve the electronics.<br />I'm not an actual health and saftey person, so actaully I'm not able to provide this advice, so someone else better re-write this.",
+			},
+			{
+				"answer": "Nothing is happening!",
+				"nextquestion": "motor-board-led"
+			},
+			{
+				"answer": "The Motor isn't doing what I told it to!",
+				"nextquestion": "motor-programming-direction"
+			},
+			{
+				"answer": "My Motors' output is weird!",
+				"nextquestion": "motor-force"
+			}
+		]
+	},
+
+	"motor-force":
+	{
+		"question": "No two Motors are exactly the same, and the <a href=\"http://en.wikipedia.org/wiki/Pulse-width_modulation\">Pulse-Width Modulated</a> nature of the power supply will always cause issues, but there are some things we can check.<br/>Is your battery charged? Less charge means lower voltage means less torque.<br /><img src=\"https://www.studentrobotics.org/images/content/kit/battery.png\" />",
+		"answers":
+		[
+			{
+				"answer": "The Battery is definatly charged",
+				"nextquestion": "motor-count"
+			},
+			{
+				"answer": "The Battery isn't charged",
+				"message": "<a href=\"https://www.studentrobotics.org/docs/kit/batteries/\">Charge your batteries</a> and try again. Make sure to follow the instructions appropriate for the charger you have been supplied with.",
+				"askiffixed": true,
+				"nextquestion": "motor-count"
+			}
+		]
+	},
+
+	"motor-count":
+	{
+		"question": "Do you have more than one Motor running?",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+				"nextquestion": "motor-more-than-one"
+			},
+			{
+				"answer": "No",
+				"nextquestion": "motor-programming-direction"
+			}
+		]
+	},
+
+	"motor-more-than-one":
+	{
+		"question": "Select the option that best describes you situation.",
+		"answers":
+		[
+			{
+				"answer": "Some of the Motors arn't spinning.",
+				"message": "You may well have mixed up a Motor index in your code, or it may be due to a bug in the SR software what is being fixed. Double check your Motor indexing",
+				"askiffixed": true,
+				"nextquestion": "motor-programming"
+			},
+			{
+				"answer": "Some of the Motors spin in the wrong direction",
+				"message": "Check the Motors are orientated correctly, and negate the values you pass to Motors if you notice it is spinning in the wrong direction.",
+				"askiffixed": true,
+				"nextquestion": "motor-programming"
+			},
+			{
+				"answer": "The Motors are all spinning at different speeds!",
+				"message": "Double check your code for discrepancies, however, it is worth noting that no two Motors will give you exactly the same output, and you will need to account for this in your code.<br />Ensuring your batteries are charged will result in <b>predicatable</b> operation, and allow you to cope with the issue.",
+				"askiffixed": true,
+				"nextquestion": "motor-programming"
+			}
+		]
+	},
+
+	"motor-board-led":
+	{
+		"question": "Is the Power light on your Motor Board on?<br /><img src=\"https://www.studentrobotics.org/images/content/kit/mcv4b_board_diagram.png\" />",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+				"nextquestion": "motor-board-usb"
+			},
+			{
+				"answer": "No",
+				"nextquestion": "motor-board-power"
+			}
+		]
+	},
+	
+	"motor-board-power":
+	{
+		"question": "Is the Motor Board connected to power?",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+				"nextquestion": "motor-board-usb"
+			},
+			{
+				"answer": "No",
+				"message": "Connect the Motor to the Power Board as described <a href=\"https://www.studentrobotics.org/docs/kit/motor_board\">in the Docs</a>",
+				"askiffixed": true,
+				"nextquestion": "motor-board-usb"
+			}
+		]
+	},
+
+	"motor-board-usb":
+	{
+		"question": "Is the Motor Board connected with a USB to an appropriatly connected USB Hub?",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+				"nextquestion": "motor-programming"
+			},
+			{
+				"answer": "No",
+				"message": "Connect the Motor up with USB cables",
+				"askiffixed": true,
+				"nextquestion": "motor-programming"
+			}
+		]
+	},
+	
+	"motor-programming-direction":
+	{
+		"question": "Does the Motor spin in the wrong direction?",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+				"message": "Consider negating the value you provide to the Motor, as this will cause it to psin in the opposite direction.",
+				"askiffixed": true,
+				"nextquestion": "motor-programming"
+			},
+			{
+				"answer": "No",
+				"nextquestion": "motor-programming"
+			}
+		]
+	},
+	
+	"motor-programming":
+	{
+		"question": "Please test the Motor with the <a href='#'>manual control interface</a>. Does the Motor respond to the manual control interface?",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+				"message": "There may be an issue with your code, consider posting on the forum."
+			},
+			{
+				"answer": "No",
+				"message": "There may be an issue with your Motor Board, consider posting on the forum."
+			}
+		]
+	},
+
+	// servo
+
+	"servo-board-function-check":
+	{
+		"question": "Choose the option that best describes your situation",
+		"answers":
+		[
+			{
+				"answer": "Nothing is happening!",
+				"nextquestion": "servo-board-led"
+			},
+			{
+				"answer": "The Servo isn't doing what I told it to!",
+				"message": "Check that the servo is orientated correctly, and check whether it is a continuous Servo.",
+				"askiffixed": true,
+				"nextquestion": "servo-programming"
+			}
+		]
+	},
+
+	"servo-board-led":
+	{
+		"question": "Is the Power light on your Servo Board on?<br /><img src=\"https://www.studentrobotics.org/images/content/kit/servo_board_diagram.png\" />",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+				"nextquestion": "servo-board-sric"
+			},
+			{
+				"answer": "No",
+				"nextquestion": "servo-board-power"
+			}
+		]
+	},
+	
+	"servo-board-power":
+	{
+		"question": "Is the Servo Board connected to power?",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+				"nextquestion": "servo-board-sric"
+			},
+			{
+				"answer": "No",
+				"message": "Connect the Servo to power as described <a href=\"https://www.studentrobotics.org/docs/kit/servo_board\">in the Docs</a>",
+				"askiffixed": true,
+				"nextquestion": "servo-board-sric"
+			}
+		]
+	},
+
+	"servo-board-sric":
+	{
+		"question": "Is the Servo Board connected with SRIC cables?<br /><img src=\"https://www.studentrobotics.org/images/content/token_ring_diagram.png\" />",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+				"nextquestion": "servo-programming"
+			},
+			{
+				"answer": "No",
+				"message": "Connect the Servo up to the <a href=\"https://www.studentrobotics.org/docs/kit/token_ring\">Token Ring</a> with SRIC cables, make sure they are the right way round",
+				"askiffixed": true,
+				"nextquestion": "servo-programming"
+			}
+		]
+	},
+	
+	"servo-programming":
+	{
+		"question": "Please test the Servo with the <a href='#'>manual control interface</a>. Does the Servo respond to the manual control interface?",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+				"message": "There may be an issue with your code, consider posting on the forum."
+			},
+			{
+				"answer": "No",
+				"message": "There may be an issue with your Servo Board, consider posting on the forum."
+			}
+		]
+	},
+};

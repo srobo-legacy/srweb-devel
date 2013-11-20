@@ -181,7 +181,11 @@ if ($page == 'home'){
 
 	if ($pageInDocs){
 		$smarty->assign('docsNav', constructDocsNavHierarchy());
-		$smarty->display('docs.tpl');
+		if ($page == 'docs/troubleshooting/troubleshooter'){
+			$smarty->display('troubleshooter.tpl');
+		} else {
+			$smarty->display('docs.tpl');
+		}
 	} elseif ($pageInNews) {
 		// Get links to prev/next news item
 		$feed = getFeedContent();

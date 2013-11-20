@@ -1,0 +1,90 @@
+h1
+{
+	color:#0d1f61;
+	line-height:1.3em;
+	font-size:26px;
+	margin-bottom:10px;
+	padding-top:10px;
+}
+
+div.question
+{
+	padding: 10px;
+	margin-bottom: 2px;
+	font-size: 12pt;
+}
+
+p
+{
+	margin-left: 10px;
+	text-align:justify;
+	word-spacing:0.1em;
+}
+
+p.message
+{
+	font-style: italic;
+	margin-left: 40px;
+}
+
+p.question
+{
+}
+
+a
+{
+	text-decoration:none;
+	color:#DE6400;
+}
+
+a:hover
+{
+	color:#0d1f61;
+}
+
+img
+{
+	margin-top: 10px;
+}
+
+span.rostok
+{
+	padding: 10px;
+    display: inline;
+}
+
+#resetbtnattop
+{
+	margin: 10px;
+}
+
+button.answer
+{
+	margin: 10px;
+}
+
+button.clicked
+{
+	margin: 10px;
+}
+
+input.answer
+{
+    display: inline;
+}
+
+input.clicked
+{
+}
+
+label
+{
+    display: inline;
+}
+
+hr
+{
+    color: #000;
+    background-color: #000;
+    height: 1px;
+}
