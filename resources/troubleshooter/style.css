@@ -55,17 +55,15 @@ span.rostok
 
 #resetbtnattop
 {
-	margin: 10px;
+    margin: 10px;
+    background: #dddddd;
+    border: 2px #bbbbbb outset;
+    padding: 3px;
 }
 
-button.answer
+#resetbtnattop:active
 {
-	margin: 10px;
-}
-
-button.clicked
-{
-	margin: 10px;
+    border-style: inset;
 }
 
 input.answer
