@@ -1,0 +1,177 @@
+ 
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>Troubleshooter | Student Robotics</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="keywords" content="troubleshooting, faq, problems, help, hardware, kit" />
+	<meta name="description" content="Helps you troubleshoot your code" />
+	<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/docs.css" />
+	<link rel="stylesheet" type="text/css" media="print" href="/srweb/css/print.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/docs_extra.css" />
+	<link rel="alternate" type="application/rss+xml" title="SR RSS" href="/srweb/feed.php" />
+	<link rel="shortcut icon" href="/srweb/images/template/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+	<!-- Syntax highlighting using JS -->
+	<script type="text/javascript" src="https://yandex.st/highlightjs/6.1/highlight.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://yandex.st/highlightjs/6.1/styles/sunburst.min.css" /><!-- stylesheet for syntax highlighting -->
+
+	<!-- Use jQuery to add a class 'python' to all <code> blocks -->
+	<script type="text/javascript">
+	  add_python_attr = function(){
+	    $("pre code").addClass("python");
+	  }
+	  $(document).ready(add_python_attr);
+
+	  <!-- Do highlighting -->
+	  hljs.initHighlightingOnLoad();
+	</script>
+
+</head>
+<body>
+
+<div id="pageWrapper">
+
+	<div id="header">
+	<a href="/srweb/"><img src="../../images/template/website_logo.png" alt="Student Robotics Logo" /></a>
+
+	<form action="/srweb/search.php" method="get">
+		<fieldset>
+			<input type="text" name="q" />
+			<input type="image" src="../../images/template/magnifier.png" alt="Search" />
+		</fieldset>
+	</form>
+
+	<div class="ie6-prop-clear"></div>
+	<div class="ie6-wrapper">
+	<ul>
+		<li><a href="/srweb/">Home</a></li>
+		<li><a href="/srweb/ide/">IDE</a></li>
+		<li><a href="/srweb/docs/">Docs</a></li>
+		<li><a href="/srweb/forum/">Forum</a></li>
+		<li><a href="/srweb/teams/">Teams</a></li>
+		<li><a href="/srweb/about/">About Us</a></li>
+		<li><a href="/srweb/news/">News</a></li>
+	</ul>
+	</div>
+</div>
+
+	<div id="docs_troubleshooting_troubleshooter" class="content docs">
+
+		<div id="docsNav">
+			<ul>
+<li><a href='/srweb/docs'>docs</a>
+<ul>
+<li><a href='/srweb/docs/IDE'>IDE</a>
+<ul>
+<li><a href='/srweb/docs/IDE/code_checking'>code checking</a></li>
+<li><a href='/srweb/docs/IDE/creating_a_project'>creating a project</a></li>
+<li><a href='/srweb/docs/IDE/getting_code_on_the_robot'>getting code on the robot</a></li>
+<li><a href='/srweb/docs/IDE/good_commit_messages'>good commit messages</a></li>
+</ul>
+</li>
+<li><a href='/srweb/docs/kit'>kit</a>
+<ul>
+<li><a href='/srweb/docs/kit/batteries'>batteries</a>
+<ul>
+<li><a href='/srweb/docs/kit/batteries/hke4_charger'>hke4 charger</a></li>
+<li><a href='/srweb/docs/kit/batteries/imax_b6_charger'>imax b6 charger</a></li>
+</ul>
+</li>
+<li><a href='/srweb/docs/kit/mechanical'>mechanical</a></li>
+<li><a href='/srweb/docs/kit/motor_board'>motor board</a></li>
+<li><a href='/srweb/docs/kit/power_board'>power board</a></li>
+<li><a href='/srweb/docs/kit/ruggeduino'>ruggeduino</a></li>
+<li><a href='/srweb/docs/kit/servo_board'>servo board</a></li>
+<li><a href='/srweb/docs/kit/token_ring'>token ring</a></li>
+</ul>
+</li>
+<li><a href='/srweb/docs/programming'>programming</a>
+<ul>
+<li><a href='/srweb/docs/programming/git_repositories'>git repositories</a></li>
+<li><a href='/srweb/docs/programming/python'>python</a>
+<ul>
+<li><a href='/srweb/docs/programming/python/functions'>functions</a></li>
+<li><a href='/srweb/docs/programming/python/libraries'>libraries</a></li>
+</ul>
+</li>
+<li><a href='/srweb/docs/programming/sr'>sr</a>
+<ul>
+<li><a href='/srweb/docs/programming/sr/motors'>motors</a></li>
+<li><a href='/srweb/docs/programming/sr/power'>power</a></li>
+<li><a href='/srweb/docs/programming/sr/ruggeduinos'>ruggeduinos</a></li>
+<li><a href='/srweb/docs/programming/sr/servos'>servos</a></li>
+<li><a href='/srweb/docs/programming/sr/vision'>vision</a>
+<ul>
+<li><a href='/srweb/docs/programming/sr/vision/markers'>markers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href='/srweb/docs/python'>python</a></li>
+<li><a href='/srweb/docs/rules'>rules</a></li>
+<li><a href='/srweb/docs/troubleshooting'>troubleshooting</a>
+<ul>
+<li><a href='/srweb/docs/troubleshooting/hardware'>hardware</a></li>
+<li><a href='/srweb/docs/troubleshooting/python'>python</a></li>
+<li><a href='/srweb/docs/troubleshooting/troubleshooter'>troubleshooter</a></li>
+</ul>
+</li>
+<li><a href='/srweb/docs/tutorials'>tutorials</a>
+<ul>
+<li><a href='/srweb/docs/tutorials/basic_IO'>basic IO</a></li>
+<li><a href='/srweb/docs/tutorials/basic_motor_control'>basic motor control</a></li>
+<li><a href='/srweb/docs/tutorials/python'>python</a></li>
+<li><a href='/srweb/docs/tutorials/walkthrough'>walkthrough</a></li>
+</ul>
+</li>
+<li><a href='/srweb/docs/user_accounts'>user accounts</a></li>
+</ul>
+</li>
+</ul>
+
+		</div>
+
+		<div id="content">
+			<div id="print_warning">
+				As you have printed this it is now out of date. Please visit<br /><strong>https://localhost/srweb/docs/troubleshooting/troubleshooter</strong><br />for the latest documentation.
+			</div>
+			<div id="troubleshooter"></div>
+
+<p><button id="resetbtnattop" onclick="clearedReset()">Troubleshoot another issue</button></p>
+
+		</div>
+		<p></p>
+
+        <script type="application/javascript" src="data.json"></script>
+        <script type="application/javascript" src="troubleshoot.js"></script>
+	</div>
+
+	<div id="original">
+		Original: <a href="/srweb/content/en/docs/troubleshooting/troubleshooter">en/docs/troubleshooting/troubleshooter</a>
+	</div>
+
+
+	<div id="footer">
+	<a class="rss" href="/srweb/feed.php">
+		<img src="/srweb/images/template/feed25x25.png" alt="RSS" title="SR RSS Latest News Feed" /></a>
+	<a class="facebook" href="https://www.facebook.com/StudentRobotics">
+		<img src="/srweb/images/template/facebook25x25.png" alt="Facebook" title="SR Facebook page" /></a>
+	<a class="twitter" href="https://twitter.com/StudentRobotics">
+		<img src="/srweb/images/template/twitter25x25.png" alt="Twitter" title="SR Twitter feed" /></a>
+	<a class="youtube" href="https://www.youtube.com/user/StudentRobotics">
+		<img src="/srweb/images/template/youtube25x59.png" alt="YouTube" title="SR YouTube account" /></a>
+	<span class="copyright">&copy; Student Robotics 2011-2013
+</div>
+</div>
+
+</body>
+
+</html>
