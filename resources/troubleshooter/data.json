@@ -34,11 +34,11 @@ questions = {
 				"answer": "Servo Board and Servos",
 				"nextquestion": "servo-board-function-check"
 			},
-			/*{
-				"answer": "IO Board",
-				"message": "Sorry, this section doesn't exist yet, consider solving a different problem for the moment.",
-				"nextquestion": ""
-			},*/
+			{
+				"answer": "IO Board (Ruggeduino)",
+				/*"message": "Sorry, this section doesn't exist yet, consider solving a different problem for the moment.",*/
+				"nextquestion": "io-board-function-check"
+			},
 			{
 				"answer": "Batteries",
 				"message": "Batteries are dangerous, don't do anything risky!!<br />Sorry, this section doesn't exist yet, consider solving a different problem for the moment.",
@@ -52,6 +52,107 @@ questions = {
 		]
 	},
 
+	// io / ruggeduino
+
+	"io-board-function-check":
+	{
+		"question": "Choose the option that best describes your situation<br/><img src=\"https://www.studentrobotics.org/images/content/kit/ruggeduino_diagram.png\" />",
+		"answers":
+		[
+			{
+				"answer": "My Ruggeduino isn't doing anything!",
+                "nextquestion": "io-board-led"
+			},
+			{
+				"answer": "My peripherals aren't playing ball.",
+				"message": "Are they playing chess?",
+                "nextquestion": "io-peripherals"
+			},
+		]
+	},
+
+	"io-board-led":
+	{
+		"question": "Is the Power light on your Ruggeduino on?",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+				"nextquestion": "io-board-usb"
+			},
+			{
+				"answer": "No",
+				"nextquestion": "io-board-power"
+			}
+		]
+	},
+	
+	"io-board-power":
+	{
+		"question": "Is the Ruggeduino connected to power?",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+				"nextquestion": "io-board-usb"
+			},
+			{
+				"answer": "No",
+				"message": "Connect the Ruggeduino to the Power Board as described <a href=\"https://www.studentrobotics.org/docs/kit/ruggeduino\">in the Docs</a>",
+				"askiffixed": true,
+				"nextquestion": "io-board-dead"
+			}
+		]
+	},
+	
+	"io-board-dead":
+	{
+	    "question": "Is there any apparent damage to your Ruggeduino (check the pins for visible deformation)?",
+	    "answers":
+	    [
+	        {
+	        	"answer": "Yes",
+				"message": "There is an issue with your IO Board, consider posting on the forum."
+			},
+			{
+				"answer": "No",
+				"message": "There may be an issue with your power connector, consider posting on the forum."
+			}
+	    ]
+	},
+
+	"io-board-usb":
+	{
+		"question": "Is the Ruggeduino connected with a USB to an appropriatley connected USB Hub?",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+				"nextquestion": "io-peripherals"
+			},
+			{
+				"answer": "No",
+				"message": "There may be an issue with your specific code, or the Ruggeduino itself, consider posting on the forum."
+			}
+		]
+	},
+	
+	"io-peripherals":
+    {
+        "question": "There could be an issue with one of your peripherals, please verify the peripherals are connected properly, and consider testing them independantly.",
+		"answers":
+		[
+			{
+				"answer": "My Peripherals are fine!",
+				"message": "You may well have mixed up an IO pin index in your code, remember they are <a href=\"http://en.wikipedia.org/wiki/Zero-based_numbering\">zero-indexed</a>. Double check your pin indexing<br />Make sure you are using the right pins for your type of output (digital or analouge) as per <a href=\"https://www.studentrobotics.org/docs/programming/sr/ruggeduinos/\">the docs</a><br /><br />If you continue to have difficulties then consider posting on the forum."
+			},
+			{
+				"answer": "I need help with my peripherals",
+				"message": "Consider asking about this hardware on the forum, and check the manual or contact the manufacturer of your peripheral."
+			}
+		]
+    },
+
 	// motor
 
 	"motor-board-function-check":
@@ -61,18 +162,14 @@ questions = {
 		[
 			{
 				"answer": "My Motor Board or Motor has started smoking!",
-				"message": "You should immediatly shut off the power supply to the Motor Board, and stay away from the damaged components.<br />Ensure your room is well ventilated so you arn't poisoned, and contact a member of staff.<br/>Do <b>not</b> take risks with your life in an attempt to preserve the electronics.<br />I'm not an actual health and saftey person, so actaully I'm not able to provide this advice, so someone else better re-write this.",
+				"message": "You should immediatly shut off the power supply to the Motor Board, and stay away from the damaged components.<br />Ensure your room is well ventilated so you aren't poisoned, and contact a member of staff.<br/>Do <b>not</b> take risks with your life in an attempt to preserve the electronics.<br />I'm not an actual health and saftey person, so actaully I'm not able to provide this advice, so someone else better re-write this.",
 			},
 			{
 				"answer": "Nothing is happening!",
 				"nextquestion": "motor-board-led"
 			},
 			{
-				"answer": "The Motor isn't doing what I told it to!",
-				"nextquestion": "motor-programming-direction"
-			},
-			{
-				"answer": "My Motors' output is weird!",
+				"answer": "My motors are not doing what I expected.",
 				"nextquestion": "motor-force"
 			}
 		]
@@ -118,7 +215,7 @@ questions = {
 		"answers":
 		[
 			{
-				"answer": "Some of the Motors arn't spinning.",
+				"answer": "Some of the Motors aren't spinning.",
 				"message": "You may well have mixed up a Motor index in your code, or it may be due to a bug in the SR software what is being fixed. Double check your Motor indexing",
 				"askiffixed": true,
 				"nextquestion": "motor-programming"
@@ -174,7 +271,7 @@ questions = {
 
 	"motor-board-usb":
 	{
-		"question": "Is the Motor Board connected with a USB to an appropriatly connected USB Hub?",
+		"question": "Is the Motor Board connected with a USB to an appropriatley connected USB Hub?",
 		"answers":
 		[
 			{
@@ -236,8 +333,8 @@ questions = {
 				"nextquestion": "servo-board-led"
 			},
 			{
-				"answer": "The Servo isn't doing what I told it to!",
-				"message": "Check that the servo is orientated correctly, and check whether it is a continuous Servo.",
+				"answer": "The Servos aren't doing what I expected.",
+				"message": "Check that the servo is orientated correctly as described in <a href=\"https://www.studentrobotics.org/docs/kit/servo_board\">the docs</a>, and check whether it is a continuous Servo.",
 				"askiffixed": true,
 				"nextquestion": "servo-programming"
 			}
