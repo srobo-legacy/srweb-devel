@@ -20,11 +20,10 @@ questions = {
 		"question": "Which piece of kit seems to be the issue?",
 		"answers":
 		[
-			/*{
+			{
 				"answer": "Power Board",
-				"message": "Sorry, this section doesn't exist yet, consider solving a different problem for the moment.",
-				"nextquestion": ""
-			},*/
+				"nextquestion": "power-board-function-checks"
+			},
 
 			{
 				"answer": "Motor Board and Motors",
@@ -51,6 +50,96 @@ questions = {
 		]
 	},
 
+	// power board
+	
+	"power-board-function-checks":
+	{
+		"question": "Choose the option that best describes your situation<br/><img src=\"https://www.studentrobotics.org/images/content/kit/power_board_diagram.png\" />",
+		"answers":
+		[
+			{
+				"answer": "My Power Board isn't doing anything!",
+                "nextquestion": "power-board-power-check"
+			},
+			{
+				"answer": "The lights are on but the screen is not",
+                "nextquestion": "power-board-usb"
+			},
+		]
+	},
+	
+	"power-board-power-check":
+	{
+		"question": "Is the battery plugged in and charged?",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+				"nextquestion": "check-fuse"
+			},
+			{
+				"answer": "No",
+                "message": "Check connections as per docs. <a href=\"https://www.studentrobotics.org/docs/kit/batteries/\">Charge your batteries</a> and try again. Make sure to follow the instructions appropriate for the charger you have been supplied with.",
+				"askiffixed": true,
+				"nextquestion": "battery-damage-check"
+			},
+		]
+	},
+	
+	"check-fuse":
+	{
+		"question": "Is the fuse blown? Turn off the power and disconect the battery, Take out the fuse and inspect it",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+                "message": "Replace the fuse <a href=\"https://www.studentrobotics.org/docs/kit/power_board\">as per the docs</a>",
+				"askiffixed": true,
+				"nextquestion": "battery-damage-check"
+			},
+			{
+				"answer": "No",
+                "message": "There may be an issue with your Power Board, consider posting on the forums"
+			},
+		]
+	},
+	
+	"power-board-usb":
+	{
+		"question": "Have you plugged in the USB Stick with the code on?",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+                "message": "Check your code and file name",
+				"askiffixed": true,
+				"nextquestion": "USB-Stick-dead"
+			},
+			{
+				"answer": "No",
+                "message": "Plug in the USB Stick with your code on it",
+				"askiffixed": true,
+				"nextquestion": "USB-Stick-dead"
+			},
+		]
+	},
+	
+	"USB-Stick-dead":
+	{
+		"question": "Does the USB Stick work? Consider trying a different USB Stick",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+                "message": "There may be an issue with power board consider posting on forums"
+			},
+			{
+				"answer": "No",
+                "message": "Use a different USB Stick, consider posting on the forums"
+			},
+		]
+	},
+	
 	// batteries 
 	
 	"battery-damage-check":
