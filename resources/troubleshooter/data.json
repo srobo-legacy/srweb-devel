@@ -374,7 +374,7 @@ questions = {
 	
 	"motor-programming":
 	{
-		"question": "Please test the Motor with the <a href='#'>manual control interface</a>. Does the Motor respond to the manual control interface?",
+		"question": "Please test the Motor with the <a href='https://www.studentrobotics.org/docs/kit/manual_control_interface'>manual control interface</a>. Does the Motor respond to the manual control interface?",
 		"answers":
 		[
 			{
@@ -462,7 +462,7 @@ questions = {
 	
 	"servo-programming":
 	{
-		"question": "Please test the Servo with the <a href='#'>manual control interface</a>. Does the Servo respond to the manual control interface?",
+		"question": "Please test the Servo with the <a href='https://www.studentrobotics.org/docs/kit/manual_control_interface'>manual control interface</a>. Does the Servo respond to the manual control interface?",
 		"answers":
 		[
 			{
