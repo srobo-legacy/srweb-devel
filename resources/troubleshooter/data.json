@@ -41,8 +41,7 @@ questions = {
 			},
 			{
 				"answer": "Batteries",
-				"message": "Batteries are dangerous, don't do anything risky!!<br />Sorry, this section doesn't exist yet, consider solving a different problem for the moment.",
-				"nextquestion": ""
+				"nextquestion": "battery-damage-check"
 			},
 			/*{
 				"answer": "Everything!",
@@ -52,6 +51,74 @@ questions = {
 		]
 	},
 
+	// batteries 
+	
+	"battery-damage-check":
+	{
+		"question": "Does the battery have any holes in it?",
+		"answers":
+		[
+			{
+				"answer": "Yes!",
+                "message": "Panic. Put battery in bucket of SALTY WATER!!!"
+			},
+			{
+				"answer": "No!",
+                "nextquestion": "battery-bulging"
+			},
+		]
+	},
+	
+	"battery-bulging":
+	{
+		"question": "Does the battery have any bulges in it?",
+		"answers":
+		[
+			{
+				"answer": "Yes!",
+                "message": "Panic. Put battery in bucket of SALTY WATER!!!"
+			},
+			{
+				"answer": "No!",
+                "nextquestion": "is-battery-charged"
+			},
+		]
+	},
+	
+	"is-battery-charged":
+	{
+		"question": "Choose the option that best describes your situation",
+		"answers":
+		[
+			{
+				"answer": "There are no lights on the power board",
+                "message": "Check connections as per docs. <a href=\"https://www.studentrobotics.org/docs/kit/batteries/\">Charge your batteries</a> and try again. Make sure to follow the instructions appropriate for the charger you have been supplied with.",
+				"askiffixed": true,
+				"nextquestion": "both-batteries"
+			},
+			{
+				"answer": "Everything is fine",
+                "message": "Good for you. Go back to building"
+			},
+		]
+	},
+
+	"both-batteries":
+	{
+		"question": "Is there an issue with both batteries?",
+		"answers":
+		[
+			{
+				"answer": "Yes",
+                "message": "There may be a problem with your Power Board or Charger, consider posting on the Forums"
+			},
+			{
+				"answer": "No",
+                "message": "There may be a problem with the specific battery, consider posting on the Forums"
+			},
+		]
+	},
+	
 	// io / ruggeduino
 
 	"io-board-function-check":
