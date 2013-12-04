@@ -1,0 +1,134 @@
+//TITLE:	Ruggeduino custom firmware
+//DESCRIPTION:	Explains how to use the Student Robotics robot API to interact with a Ruggeduino with customised firmware.
+//KEYWORDS:	python, robot, arduino, ruggeduino, programming, custom firmware, firmware
+//CONTENT_TYPE:	markdown
+
+Custom firmware
+===============
+
+In order to use custom firmware on your Ruggeduino, or any other Ruggeduino,
+you first need to modify your code to use the Custom Robot Object
+Initialisation. This is documented on the
+[SR Module page](/docs/programming/sr/#CustomRobotInit). Your code will then
+look something along these lines:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from sr import *
+
+R = Robot.setup()
+
+R.init()
+
+R.wait_start()
+
+# The rest of your code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+[Completely custom firmware](/docs/programming/sr/ruggeduinos/custom_firmware#completely) {#completely}
+----------------------------
+
+If you are using a completely custom firmware, you need to get the serial ID of
+your Ruggeduino. These are 20-character strings of mostly numbers, and are
+output in the log window when you run a program on your robot with your
+Ruggeduino connected.
+
+Once you have the ID, you can tell the robot to ignore that Ruggeduino, so that
+the power board won't send commands to it. After calling Robot.setup(), you
+should call the ruggeduino_ignore_id method of the robot object, with the ID as
+an argument. You'll need the ID later, so it's best to save it into a variable:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from sr import *
+
+RUGGEDUINO_ID = "752303138333517171B1" # Replace this with the actual ID
+
+R = Robot.setup()
+
+R.ruggeduino_ignore_id( RUGGEDUINO_ID )
+
+R.init()
+
+R.wait_start()
+
+# The rest of your code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You probably also want to get the serial device name of the Ruggeduino, in
+order to access it in your own code.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from sr import *
+
+RUGGEDUINO_ID = "752303138333517171B1" # Replace this with the actual ID
+
+R = Robot.setup()
+
+R.ruggeduino_ignore_id( RUGGEDUINO_ID )
+
+R.init()
+
+ruggeduino_device = R.ruggeduinos[RUGGEDUINO_ID].serial_dev
+
+# Do your Ruggeduino initialisation here if you wish
+
+R.wait_start()
+
+# The rest of your code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+[Extension of the SR firmware](/docs/programming/sr/ruggeduinos/custom_firmware#extension) {#extension}
+------------------------------
+
+If you wish to extend the SR firmware (which can be downloaded
+[here](/resources/kit/ruggeduino-fw.ino) and loaded into the Arduino IDE for
+modification), you can use the following process to integrate your new command
+into the existing interface:
+
+1. Extend the Ruggeduino class with an extra method to perform the command. You
+   should lock the Ruggeduino object while receiving the result, in order to
+   ensure that multiple threads can't send conflicting commands at once. You
+   can call the "command" method of the Ruggeduino object in order to send the
+   command character - you can send arguments by appending them to the command
+   letter. You can use this example as a template:
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   class CustomisedRuggeduino(Ruggeduino):
+       def do_custom_thing(self): # You can call this method whatever you want
+   
+           with self.lock: # This locks the Ruggeduino object
+   
+               result = self.command("c")
+               # You can choose whichever command letter you want,
+               # but ensure not to use one that is already being used
+               # in the old firmware.
+   
+           return str(result)
+           # You can also use float(result)
+           # to return the result a floating-point number, for example.
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2. Tell the robot which class to use for custom Ruggeduino objects instead of
+   the default. You can do this using the ruggeduino_set_handler_by_fwver
+   method to use the firmware version string to tell it which Ruggeduinos to
+   use, or by the serial ID using the ruggeduino_set_handler_by_id method.
+   The firmware version is set to "SRcustom" in the firmware linked to above,
+   but you may set it to any other string. Just be sure that it continues to
+   output the colon after the version string.
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   from sr import *
+   
+   R = Robot.setup()
+   
+   R.ruggeduino_set_handler_by_fwver("SRcustom", CustomisedRuggeduino)
+   # First argument is firmware version; second is the name of the class.
+   # Alternatively, you can set the handler by the serial ID
+   # R.ruggeduino_set_handler_by_id("752303138333517171B1", CustomisedRuggeduino)
+   
+   R.init()
+   
+   R.wait_start()
+   
+   # The rest of your code
+   
+   # You can then simply call the method you wrote whenever you need it
+   R.ruggeduinos[0].do_custom_thing()
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
