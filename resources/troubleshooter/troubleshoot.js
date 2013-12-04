@@ -48,7 +48,7 @@ function clicked(btn, parent, ans)
 	{
 		var newmessage = document.createElement('p');
 		newmessage.setAttribute('class', 'message');
-		newmessage.innerHTML = "Thankyou for testing the SR Troubleshooter!<br />Have a nice day!";
+		newmessage.innerHTML = "Thank you for testing the SR Troubleshooter.<br />Have a nice day!";
 		parent.appendChild(newmessage);
 
 		// reset button

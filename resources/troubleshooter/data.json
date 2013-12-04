@@ -1,5 +1,5 @@
 askiffixed_question = {
-	"question": "Has this fixed your problem??",
+	"question": "Has this fixed your problem?",
 	"answers":
 	[
 		{
@@ -34,8 +34,7 @@ questions = {
 				"nextquestion": "servo-board-function-check"
 			},
 			{
-				"answer": "IO Board (Ruggeduino)",
-				/*"message": "Sorry, this section doesn't exist yet, consider solving a different problem for the moment.",*/
+				"answer": "Ruggeduino",
 				"nextquestion": "io-board-function-check"
 			},
 			{
@@ -54,16 +53,16 @@ questions = {
 	
 	"power-board-function-checks":
 	{
-		"question": "Choose the option that best describes your situation<br/><img src=\"https://www.studentrobotics.org/images/content/kit/power_board_diagram.png\" />",
+		"question": "Choose the option that best describes your situation<br/><img src=\"https://www.studentrobotics.org/images/content/kit/power_board_diagram.png\" />.",
 		"answers":
 		[
 			{
-				"answer": "My Power Board isn't doing anything!",
-                "nextquestion": "power-board-power-check"
+				"answer": "My Power Board isn't doing anything",
+                		"nextquestion": "power-board-power-check"
 			},
 			{
 				"answer": "The lights are on but the screen is not",
-                "nextquestion": "power-board-usb"
+                		"nextquestion": "power-board-usb"
 			},
 		]
 	},
@@ -79,7 +78,7 @@ questions = {
 			},
 			{
 				"answer": "No",
-                "message": "Check connections as per docs. <a href=\"https://www.studentrobotics.org/docs/kit/batteries/\">Charge your batteries</a> and try again. Make sure to follow the instructions appropriate for the charger you have been supplied with.",
+                "message": "Check connections as per docs. <a href=\"https://www.studentrobotics.org/docs/kit/batteries/\" target=\"_blank\">Charge your batteries</a> and try again. Make sure to follow the instructions appropriate for the charger you have been supplied with.",
 				"askiffixed": true,
 				"nextquestion": "battery-damage-check"
 			},
@@ -88,18 +87,18 @@ questions = {
 	
 	"check-fuse":
 	{
-		"question": "Is the fuse blown? Turn off the power and disconect the battery, Take out the fuse and inspect it",
+		"question": "Check the blown fuse light on the Power Board next to the Main Fuse as described <a href=\"https://www.studentrobotics.org/docs/kit/power_board\" target=\"_blank\">in the the docs</a> &mdash; is the fuse blown?",
 		"answers":
 		[
 			{
 				"answer": "Yes",
-                "message": "Replace the fuse <a href=\"https://www.studentrobotics.org/docs/kit/power_board\">as per the docs</a>",
+                "message": "Replace the fuse <a href=\"https://www.studentrobotics.org/docs/kit/power_board\" _target=\"_blank\">as per the docs</a>.",
 				"askiffixed": true,
 				"nextquestion": "battery-damage-check"
 			},
 			{
 				"answer": "No",
-                "message": "There may be an issue with your Power Board, consider posting on the forums"
+		                "message": "There may be an issue with your Power Board, consider posting on the <a href=\"https://studentrobotics.org/forums\" target=\"_blank\">forums</a>."
 			},
 		]
 	},
@@ -111,13 +110,13 @@ questions = {
 		[
 			{
 				"answer": "Yes",
-                "message": "Check your code and file name",
+        		        "message": "Check your code and file name.",
 				"askiffixed": true,
 				"nextquestion": "USB-Stick-dead"
 			},
 			{
 				"answer": "No",
-                "message": "Plug in the USB Stick with your code on it",
+            			"message": "Plug in the USB Stick with your code on it.",
 				"askiffixed": true,
 				"nextquestion": "USB-Stick-dead"
 			},
@@ -126,16 +125,16 @@ questions = {
 	
 	"USB-Stick-dead":
 	{
-		"question": "Does the USB Stick work? Consider trying a different USB Stick",
+		"question": "Does the USB Stick work? Consider trying a different USB Stick.",
 		"answers":
 		[
 			{
 				"answer": "Yes",
-                "message": "There may be an issue with power board consider posting on forums"
+                		"message": "There may be an issue with power board consider posting on <a href=\"https://studentrobotics.org/forums\" target=\"_blank\">forums</a>."
 			},
 			{
 				"answer": "No",
-                "message": "Use a different USB Stick, consider posting on the forums"
+             			"message": "Use a different USB Stick, consider posting on the <a href=\"https://studentrobotics.org/forums\" target=\"_blank\">forums</a>."
 			},
 		]
 	},
@@ -144,50 +143,34 @@ questions = {
 	
 	"battery-damage-check":
 	{
-		"question": "Does the battery have any holes in it?",
+		"question": "Does the battery have any bulges in it? <img title=\"Three cell, 2200mAh, lithium-ion polymer battery\" alt=\"Three cell, 2200mAh, lithium-ion polymer battery\" src=\"https://www.studentrobotics.org/images/content/kit/battery.png\" />",
 		"answers":
 		[
 			{
-				"answer": "Yes!",
-                "message": "Panic. Put battery in bucket of SALTY WATER!!!"
+				"answer": "Yes",
+               		 	"message": "You should immediately disconnect the battery, place it in a dry container &mdash; preferably outside &mdash; and contact info@studentrobotics.org to discuss how to dispose of it."
 			},
 			{
-				"answer": "No!",
-                "nextquestion": "battery-bulging"
-			},
-		]
-	},
-	
-	"battery-bulging":
-	{
-		"question": "Does the battery have any bulges in it?",
-		"answers":
-		[
-			{
-				"answer": "Yes!",
-                "message": "Panic. Put battery in bucket of SALTY WATER!!!"
-			},
-			{
-				"answer": "No!",
-                "nextquestion": "is-battery-charged"
+				"answer": "No",
+                		"nextquestion": "is-battery-charged"
 			},
 		]
 	},
 	
 	"is-battery-charged":
 	{
-		"question": "Choose the option that best describes your situation",
+		"question": "Choose the option that best describes your situation.",
 		"answers":
 		[
 			{
 				"answer": "There are no lights on the power board",
-                "message": "Check connections as per docs. <a href=\"https://www.studentrobotics.org/docs/kit/batteries/\">Charge your batteries</a> and try again. Make sure to follow the instructions appropriate for the charger you have been supplied with.",
+                "message": "Check connections as per docs. <a href=\"https://www.studentrobotics.org/docs/kit/batteries/\" target=\"_blank\">Charge your batteries</a> and try again. Make sure to follow the instructions appropriate for the charger you have been supplied with.",
 				"askiffixed": true,
 				"nextquestion": "both-batteries"
 			},
 			{
 				"answer": "Everything is fine",
-                "message": "Good for you. Go back to building"
+                		"message": "Good for you. Go back to building your robot."
 			},
 		]
 	},
@@ -199,11 +182,11 @@ questions = {
 		[
 			{
 				"answer": "Yes",
-                "message": "There may be a problem with your Power Board or Charger, consider posting on the Forums"
+                		"message": "There may be a problem with your Power Board or Charger, consider posting on the <a href=\"https://studentrobotics.org/forums\" target=\"_blank\">forums</a>."
 			},
 			{
 				"answer": "No",
-                "message": "There may be a problem with the specific battery, consider posting on the Forums"
+                		"message": "There may be a problem with the specific battery, consider posting on the <a href=\"https://studentrobotics.org/forums\" target=\"_blank\">forums</a>."
 			},
 		]
 	},
@@ -212,17 +195,17 @@ questions = {
 
 	"io-board-function-check":
 	{
-		"question": "Choose the option that best describes your situation<br/><img src=\"https://www.studentrobotics.org/images/content/kit/ruggeduino_diagram.png\" />",
+		"question": "Choose the option that best describes your situation.<br/><img src=\"https://www.studentrobotics.org/images/content/kit/ruggeduino_diagram.png\" />",
 		"answers":
 		[
 			{
 				"answer": "My Ruggeduino isn't doing anything!",
-                "nextquestion": "io-board-led"
+                		"nextquestion": "io-board-led"
 			},
 			{
 				"answer": "My peripherals aren't playing ball.",
 				"message": "Are they playing chess?",
-                "nextquestion": "io-peripherals"
+                		"nextquestion": "io-peripherals"
 			},
 		]
 	},
@@ -254,7 +237,7 @@ questions = {
 			},
 			{
 				"answer": "No",
-				"message": "Connect the Ruggeduino to the Power Board as described <a href=\"https://www.studentrobotics.org/docs/kit/ruggeduino\">in the Docs</a>",
+				"message": "Connect the Ruggeduino to the Power Board as described <a href=\"https://www.studentrobotics.org/docs/kit/ruggeduino\" target=\"_blank\">in the Docs</a>.",
 				"askiffixed": true,
 				"nextquestion": "io-board-dead"
 			}
@@ -266,8 +249,8 @@ questions = {
 	    "question": "Is there any apparent damage to your Ruggeduino (check the pins for visible deformation)?",
 	    "answers":
 	    [
-	        {
-	        	"answer": "Yes",
+	        	{
+	        		"answer": "Yes",
 				"message": "There is an issue with your IO Board, consider posting on the forum."
 			},
 			{
@@ -299,8 +282,8 @@ questions = {
 		"answers":
 		[
 			{
-				"answer": "My Peripherals are fine!",
-				"message": "You may well have mixed up an IO pin index in your code, remember they are <a href=\"http://en.wikipedia.org/wiki/Zero-based_numbering\">zero-indexed</a>. Double check your pin indexing<br />Make sure you are using the right pins for your type of output (digital or analouge) as per <a href=\"https://www.studentrobotics.org/docs/programming/sr/ruggeduinos/\">the docs</a><br /><br />If you continue to have difficulties then consider posting on the forum."
+				"answer": "My Peripherals are fine",
+				"message": "You may well have mixed up an IO pin index in your code, remember they are <a href=\"http://en.wikipedia.org/wiki/Zero-based_numbering\">zero-indexed</a>. Double check your pin indexing<br />Make sure you are using the right pins for your type of output (digital or analouge) as per <a href=\"https://www.studentrobotics.org/docs/programming/sr/ruggeduinos/\" target=\"_blank\">the docs</a><br /><br />If you continue to have difficulties then consider posting on the forum."
 			},
 			{
 				"answer": "I need help with my peripherals",
@@ -313,19 +296,15 @@ questions = {
 
 	"motor-board-function-check":
 	{
-		"question": "Choose the option that best describes your situation<br/><img src=\"https://www.studentrobotics.org/images/content/kit/motor_and_camcon.png\" />",
+		"question": "Choose the option that best describes your situation.<br /><img src=\"https://www.studentrobotics.org/images/content/kit/motor_and_camcon.png\" />",
 		"answers":
 		[
 			{
-				"answer": "My Motor Board or Motor has started smoking!",
-				"message": "You should immediatly shut off the power supply to the Motor Board, and stay away from the damaged components.<br />Ensure your room is well ventilated so you aren't poisoned, and contact a member of staff.<br/>Do <b>not</b> take risks with your life in an attempt to preserve the electronics.<br />I'm not an actual health and saftey person, so actaully I'm not able to provide this advice, so someone else better re-write this.",
-			},
-			{
-				"answer": "Nothing is happening!",
+				"answer": "Nothing is happening",
 				"nextquestion": "motor-board-led"
 			},
 			{
-				"answer": "My motors are not doing what I expected.",
+				"answer": "My motors are not doing what I expected",
 				"nextquestion": "motor-force"
 			}
 		]
@@ -333,7 +312,7 @@ questions = {
 
 	"motor-force":
 	{
-		"question": "No two Motors are exactly the same, and the <a href=\"http://en.wikipedia.org/wiki/Pulse-width_modulation\">Pulse-Width Modulated</a> nature of the power supply will always cause issues, but there are some things we can check.<br/>Is your battery charged? Less charge means lower voltage means less torque.<br /><img src=\"https://www.studentrobotics.org/images/content/kit/battery.png\" />",
+		"question": "No two Motors are exactly the same, and the <a href=\"http://en.wikipedia.org/wiki/Pulse-width_modulation\">Pulse-Width Modulated</a> nature of the power supply will always cause issues, but there are some things we can check.<br />Is your battery charged? Less charge means lower voltage means less torque.<br /><img src=\"https://www.studentrobotics.org/images/content/kit/battery.png\" />",
 		"answers":
 		[
 			{
@@ -342,7 +321,7 @@ questions = {
 			},
 			{
 				"answer": "The Battery isn't charged",
-				"message": "<a href=\"https://www.studentrobotics.org/docs/kit/batteries/\">Charge your batteries</a> and try again. Make sure to follow the instructions appropriate for the charger you have been supplied with.",
+				"message": "<a href=\"https://www.studentrobotics.org/docs/kit/batteries/\" target=\"_blank\">Charge your batteries</a> and try again. Make sure to follow the instructions appropriate for the charger you have been supplied with.",
 				"askiffixed": true,
 				"nextquestion": "motor-count"
 			}
@@ -372,7 +351,7 @@ questions = {
 		[
 			{
 				"answer": "Some of the Motors aren't spinning.",
-				"message": "You may well have mixed up a Motor index in your code, or it may be due to a bug in the SR software what is being fixed. Double check your Motor indexing",
+				"message": "You may well have mixed up a Motor index in your code, or it may be due to a bug in the SR software what is being fixed &mdash; double check your Motor indexing.",
 				"askiffixed": true,
 				"nextquestion": "motor-programming"
 			},
@@ -383,8 +362,8 @@ questions = {
 				"nextquestion": "motor-programming"
 			},
 			{
-				"answer": "The Motors are all spinning at different speeds!",
-				"message": "Double check your code for discrepancies, however, it is worth noting that no two Motors will give you exactly the same output, and you will need to account for this in your code.<br />Ensuring your batteries are charged will result in <b>predicatable</b> operation, and allow you to cope with the issue.",
+				"answer": "The Motors are all spinning at different speeds",
+				"message": "Double check your code for discrepancies, however, it is worth noting that no two Motors will give you exactly the same output, and you will need to account for this in your code.<br />Ensuring your batteries are charged will result in <strong>predicatable</strong> operation, and allow you to cope with the issue.",
 				"askiffixed": true,
 				"nextquestion": "motor-programming"
 			}
@@ -418,7 +397,7 @@ questions = {
 			},
 			{
 				"answer": "No",
-				"message": "Connect the Motor to the Power Board as described <a href=\"https://www.studentrobotics.org/docs/kit/motor_board\">in the Docs</a>",
+				"message": "Connect the Motor to the Power Board as described <a href=\"https://www.studentrobotics.org/docs/kit/motor_board\" target=\"_blank\">in the Docs</a>.",
 				"askiffixed": true,
 				"nextquestion": "motor-board-usb"
 			}
@@ -436,7 +415,7 @@ questions = {
 			},
 			{
 				"answer": "No",
-				"message": "Connect the Motor up with USB cables",
+				"message": "Connect the Motor up with USB cables.",
 				"askiffixed": true,
 				"nextquestion": "motor-programming"
 			}
@@ -463,7 +442,7 @@ questions = {
 	
 	"motor-programming":
 	{
-		"question": "Please test the Motor with the <a href='https://www.studentrobotics.org/docs/kit/manual_control_interface'>manual control interface</a>. Does the Motor respond to the manual control interface?",
+		"question": "Please test the Motor with the <a href=\"https://www.studentrobotics.org/docs/kit/manual_control_interface\" target=\"_blank\">manual control interface</a>. Does the Motor respond to the manual control interface?",
 		"answers":
 		[
 			{
@@ -481,7 +460,7 @@ questions = {
 
 	"servo-board-function-check":
 	{
-		"question": "Choose the option that best describes your situation",
+		"question": "Choose the option that best describes your situation.<br /><img src=\"https://www.studentrobotics.org/images/content/kit/servo_board.png\" alt=\"A photo of the Servo Board\" />",
 		"answers":
 		[
 			{
@@ -490,7 +469,7 @@ questions = {
 			},
 			{
 				"answer": "The Servos aren't doing what I expected.",
-				"message": "Check that the servo is orientated correctly as described in <a href=\"https://www.studentrobotics.org/docs/kit/servo_board\">the docs</a>, and check whether it is a continuous Servo.",
+				"message": "Check that the servo is orientated correctly as described in <a href=\"https://www.studentrobotics.org/docs/kit/servo_board\" target=\"_blank\">the docs</a>, and check whether it is a continuous Servo.",
 				"askiffixed": true,
 				"nextquestion": "servo-programming"
 			}
@@ -524,7 +503,7 @@ questions = {
 			},
 			{
 				"answer": "No",
-				"message": "Connect the Servo to power as described <a href=\"https://www.studentrobotics.org/docs/kit/servo_board\">in the Docs</a>",
+				"message": "Connect the Servo to power as described <a href=\"https://www.studentrobotics.org/docs/kit/servo_board\" target=\"_blank\">in the Docs</a>.",
 				"askiffixed": true,
 				"nextquestion": "servo-board-sric"
 			}
@@ -542,7 +521,7 @@ questions = {
 			},
 			{
 				"answer": "No",
-				"message": "Connect the Servo up to the <a href=\"https://www.studentrobotics.org/docs/kit/token_ring\">Token Ring</a> with SRIC cables, make sure they are the right way round",
+				"message": "Connect the Servo up to the <a href=\"https://www.studentrobotics.org/docs/kit/token_ring\">Token Ring</a> with SRIC cables, make sure they are the right way round.",
 				"askiffixed": true,
 				"nextquestion": "servo-programming"
 			}
@@ -551,7 +530,7 @@ questions = {
 	
 	"servo-programming":
 	{
-		"question": "Please test the Servo with the <a href='https://www.studentrobotics.org/docs/kit/manual_control_interface'>manual control interface</a>. Does the Servo respond to the manual control interface?",
+		"question": "Please test the Servo with the <a href=\"https://www.studentrobotics.org/docs/kit/manual_control_interface\" target=\"_blank\">manual control interface</a>. Does the Servo respond to the manual control interface?",
 		"answers":
 		[
 			{
