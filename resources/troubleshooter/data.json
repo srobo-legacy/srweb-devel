@@ -40,12 +40,7 @@ questions = {
 			{
 				"answer": "Batteries",
 				"nextquestion": "battery-damage-check"
-			},
-			/*{
-				"answer": "Everything!",
-				"message": "Sorry, this section doesn't exist yet, consider solving a different problem for the moment.",
-				"nextquestion": ""
-			}*/
+			}
 		]
 	},
 
@@ -110,7 +105,7 @@ questions = {
 		[
 			{
 				"answer": "Yes",
-        		        "message": "Check your code and file name.",
+        		        "message": "Check your code and ensure the filename is 'robot.zip'.",
 				"askiffixed": true,
 				"nextquestion": "USB-Stick-dead"
 			},
@@ -130,7 +125,7 @@ questions = {
 		[
 			{
 				"answer": "Yes",
-                		"message": "There may be an issue with power board consider posting on <a href=\"https://studentrobotics.org/forums\" target=\"_blank\">forums</a>."
+                		"message": "There may be an issue with Power Board consider posting on <a href=\"https://studentrobotics.org/forums\" target=\"_blank\">forums</a>."
 			},
 			{
 				"answer": "No",
@@ -163,7 +158,7 @@ questions = {
 		"answers":
 		[
 			{
-				"answer": "There are no lights on the power board",
+				"answer": "There are no lights on the Power Board",
                 "message": "Check connections as per docs. <a href=\"https://www.studentrobotics.org/docs/kit/batteries/\" target=\"_blank\">Charge your batteries</a> and try again. Make sure to follow the instructions appropriate for the charger you have been supplied with.",
 				"askiffixed": true,
 				"nextquestion": "both-batteries"
@@ -199,11 +194,11 @@ questions = {
 		"answers":
 		[
 			{
-				"answer": "My Ruggeduino isn't doing anything!",
+				"answer": "My Ruggeduino isn't doing anything",
                 		"nextquestion": "io-board-led"
 			},
 			{
-				"answer": "My peripherals aren't playing ball.",
+				"answer": "My peripherals aren't playing ball",
 				"message": "Are they playing chess?",
                 		"nextquestion": "io-peripherals"
 			},
@@ -251,18 +246,18 @@ questions = {
 	    [
 	        	{
 	        		"answer": "Yes",
-				"message": "There is an issue with your IO Board, consider posting on the forum."
+				"message": "There is an issue with your IO Board, consider posting on the <a href=\"https://studentrobotics.org/forums\" target=\"_blank\">forums</a>."
 			},
 			{
 				"answer": "No",
-				"message": "There may be an issue with your power connector, consider posting on the forum."
+				"message": "There may be an issue with your power connector, consider posting on the <a href=\"https://studentrobotics.org/forums\" target=\"_blank\">forums</a>."
 			}
 	    ]
 	},
 
 	"io-board-usb":
 	{
-		"question": "Is the Ruggeduino connected with a USB to an appropriatley connected USB Hub?",
+		"question": "Is the Ruggeduino connected with a USB to an appropriately connected USB Hub?",
 		"answers":
 		[
 			{
@@ -271,7 +266,7 @@ questions = {
 			},
 			{
 				"answer": "No",
-				"message": "There may be an issue with your specific code, or the Ruggeduino itself, consider posting on the forum."
+				"message": "There may be an issue with your specific code, or the Ruggeduino itself, consider posting on the <a href=\"https://studentrobotics.org/forums\" target=\"_blank\">forums</a>."
 			}
 		]
 	},
@@ -283,11 +278,11 @@ questions = {
 		[
 			{
 				"answer": "My Peripherals are fine",
-				"message": "You may well have mixed up an IO pin index in your code, remember they are <a href=\"http://en.wikipedia.org/wiki/Zero-based_numbering\">zero-indexed</a>. Double check your pin indexing<br />Make sure you are using the right pins for your type of output (digital or analouge) as per <a href=\"https://www.studentrobotics.org/docs/programming/sr/ruggeduinos/\" target=\"_blank\">the docs</a><br /><br />If you continue to have difficulties then consider posting on the forum."
+				"message": "You may well have mixed up an IO pin index in your code, remember they are <a href=\"http://en.wikipedia.org/wiki/Zero-based_numbering\">zero-indexed</a> - &mdash; double check your pin indexing.<br />Make sure you are using the right pins for your type of output (digital or analouge) as per <a href=\"https://www.studentrobotics.org/docs/programming/sr/ruggeduinos/\" target=\"_blank\">the docs</a><br /><br />If you continue to have difficulties then consider posting on the <a href=\"https://studentrobotics.org/forums\" target=\"_blank\">forums</a>."
 			},
 			{
 				"answer": "I need help with my peripherals",
-				"message": "Consider asking about this hardware on the forum, and check the manual or contact the manufacturer of your peripheral."
+				"message": "Consider asking about this hardware on the <a href=\"https://studentrobotics.org/forums\" target=\"_blank\">forums</a>, and check the manual or contact the manufacturer of your peripheral."
 			}
 		]
     },
@@ -316,7 +311,7 @@ questions = {
 		"answers":
 		[
 			{
-				"answer": "The Battery is definatly charged",
+				"answer": "The Battery is definitely charged",
 				"nextquestion": "motor-count"
 			},
 			{
@@ -330,7 +325,7 @@ questions = {
 
 	"motor-count":
 	{
-		"question": "Do you have more than one Motor running?",
+		"question": "Are you trying to control more than one motor at the same time?",
 		"answers":
 		[
 			{
@@ -406,7 +401,7 @@ questions = {
 
 	"motor-board-usb":
 	{
-		"question": "Is the Motor Board connected with a USB to an appropriatley connected USB Hub?",
+		"question": "Is the Motor Board connected with a USB to an approriately connected USB Hub?",
 		"answers":
 		[
 			{
@@ -447,11 +442,11 @@ questions = {
 		[
 			{
 				"answer": "Yes",
-				"message": "There may be an issue with your code, consider posting on the forum."
+				"message": "There may be an issue with your code, consider posting on the <a href=\"https://studentrobotics.org/forums\" target=\"_blank\">forums</a>."
 			},
 			{
 				"answer": "No",
-				"message": "There may be an issue with your Motor Board, consider posting on the forum."
+				"message": "There may be an issue with your Motor Board, consider posting on the <a href=\"https://studentrobotics.org/forums\" target=\"_blank\">forums</a>."
 			}
 		]
 	},
@@ -464,11 +459,11 @@ questions = {
 		"answers":
 		[
 			{
-				"answer": "Nothing is happening!",
+				"answer": "Nothing is happening",
 				"nextquestion": "servo-board-led"
 			},
 			{
-				"answer": "The Servos aren't doing what I expected.",
+				"answer": "The Servos aren't doing what I expected",
 				"message": "Check that the servo is orientated correctly as described in <a href=\"https://www.studentrobotics.org/docs/kit/servo_board\" target=\"_blank\">the docs</a>, and check whether it is a continuous Servo.",
 				"askiffixed": true,
 				"nextquestion": "servo-programming"
@@ -535,11 +530,11 @@ questions = {
 		[
 			{
 				"answer": "Yes",
-				"message": "There may be an issue with your code, consider posting on the forum."
+				"message": "There may be an issue with your code, consider posting on the <a href=\"https://studentrobotics.org/forums\" target=\"_blank\">forums</a>."
 			},
 			{
 				"answer": "No",
-				"message": "There may be an issue with your Servo Board, consider posting on the forum."
+				"message": "There may be an issue with your Servo Board, consider posting on the <a href=\"https://studentrobotics.org/forums\" target=\"_blank\">forums</a>."
 			}
 		]
 	},
