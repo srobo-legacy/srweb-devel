@@ -96,10 +96,10 @@ If you wish to extend the SR firmware (which can be downloaded
 modification), you can use the following process to integrate your new command
 into the existing interface:
 
-1. Extend the Ruggeduino class with an extra method to perform the command. You
+1. Extend the `Ruggeduino` class with an extra method to perform the command. You
    should lock the Ruggeduino object while receiving the result, in order to
    ensure that multiple threads can't send conflicting commands at once. You
-   can call the "command" method of the Ruggeduino object in order to send the
+   can call the "command" method of the `Ruggeduino` class in order to send the
    command character - you can send arguments by appending them to the command
    letter. You can use this example as a template:
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
