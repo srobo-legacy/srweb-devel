@@ -6,11 +6,13 @@
 Custom firmware
 ===============
 
-In order to use custom firmware on your Ruggeduino, or any other Ruggeduino,
-you first need to modify your code to use the Custom Robot Object
-Initialisation. This is documented on the
-[SR Module page](/docs/programming/sr/#CustomRobotInit). Your code will then
-look something along these lines:
+The Ruggeduino that came as part of your kit was shipped with a firmware that provides the functionality outlined in the [Ruggeduino](/docs/programming/sr/ruggeduinos) page.  You may wish to extend the functionality of this firmware, or completely replace it.  The `sr` library provides support for three Ruggeduino firmware scenarios:
+
+ 1. Default SR firmware
+ 2. Extended SR firmware: Firmwares that add commands to the default SR firmware.
+ 3. Completely custom: Any firmware not derived from the SR firmware.
+
+By default, the `sr` library assumes that all connected Ruggeduinos are running the SR firmware.  If you wish to use an extended SR firmware, or completely custom firmware, then you need to tell the Robot object what to do with your Ruggeduino(s).  To do this, you will need to expand the initialisation of your Robot object as detailed [here](/docs/programming/sr/#CustomRobotInit).  Your code will then look something like this:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 from sr import *
@@ -23,6 +25,8 @@ R.wait_start()
 
 # The rest of your code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The next step depends on whether you are running an extended SR firmware, or a completely custom firmware.
 
 [Completely custom firmware](/docs/programming/sr/ruggeduinos/custom_firmware#completely) {#completely}
 ----------------------------
