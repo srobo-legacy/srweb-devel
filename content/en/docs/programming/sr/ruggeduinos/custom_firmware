@@ -122,8 +122,8 @@ into the existing interface:
    
    R = Robot.setup()
    
+   # First argument is firmware version; second is the name of the class:
    R.ruggeduino_set_handler_by_fwver("SRcustom", CustomisedRuggeduino)
-   # First argument is firmware version; second is the name of the class.
    # Alternatively, you can set the handler by the ID
    # R.ruggeduino_set_handler_by_id("752303138333517171B1", CustomisedRuggeduino)
    
