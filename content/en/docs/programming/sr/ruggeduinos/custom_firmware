@@ -111,9 +111,8 @@ into the existing interface:
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 2. Tell the robot which class to use for custom Ruggeduino objects instead of
-   the default. You can do this using the ruggeduino_set_handler_by_fwver
-   method to use the firmware version string to tell it which Ruggeduinos to
-   use, or by the ID using the ruggeduino_set_handler_by_id method.
+   the default. You can do this using the`ruggeduino_set_handler_by_fwver`method to use the firmware version string to tell it which Ruggeduinos to
+   use, or by the ID using the`ruggeduino_set_handler_by_id`method.
    The firmware version is set to "SRcustom" in the firmware linked to above,
    but you may set it to any other string. Just be sure that it continues to
    output the colon after the version string.
