@@ -31,15 +31,12 @@ The next step depends on whether you are running an extended SR firmware, or a c
 [Completely custom firmware](/docs/programming/sr/ruggeduinos/custom_firmware#completely) {#completely}
 ----------------------------
 
-If you are using a completely custom firmware, you need to get the ID of
-your Ruggeduino. These are 20-character strings of mostly numbers, and are
-output in the log window when you run a program on your robot with your
+When configured correctly, the `Robot` object will perform absolutely no serial communications with a completely custom firmware.  We refer to this as *ignoring* a Ruggeduino.  To configure a `Robot` object to ignore a Ruggeduino with custom firmware, you will need to provide it with the Ruggeduino's ID.
+
+The Ruggeduino ID is a 20 character string of mostly numbers, and is output in the robot log when you run a program on your robot with your
 Ruggeduino connected.
 
-Once you have the ID, you can tell the robot to ignore that Ruggeduino, so that
-the power board won't send commands to it. After calling `Robot.setup()`, you
-should call the `ruggeduino_ignore_id` method of the robot object, with the ID as
-an argument. You'll need the ID later, so it's best to save it into a variable:
+After calling `Robot.setup()`, you should call the `ruggeduino_ignore_id` method of the robot object, with the ID as an argument. You'll need the ID later, so it's best to save it into a variable:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 from sr import *
@@ -57,17 +54,10 @@ R.wait_start()
 # The rest of your code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You probably also want to get the serial device name of the Ruggeduino, in
-order to access it in your own code.
+If you need to communicate with the Ruggeduino firmware, you will need its serial device path.  This is accessible after the `R.init()` call through the list of Ruggeduinos:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-from sr import *
-
-RUGGEDUINO_ID = "752303138333517171B1" # Replace this with the actual ID
-
-R = Robot.setup()
-
-R.ruggeduino_ignore_id( RUGGEDUINO_ID )
+# ... Robot.setup() ... etc.
 
 R.init()
 
