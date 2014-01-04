@@ -37,8 +37,8 @@ output in the log window when you run a program on your robot with your
 Ruggeduino connected.
 
 Once you have the ID, you can tell the robot to ignore that Ruggeduino, so that
-the power board won't send commands to it. After calling Robot.setup(), you
-should call the ruggeduino_ignore_id method of the robot object, with the ID as
+the power board won't send commands to it. After calling `Robot.setup()`, you
+should call the `ruggeduino_ignore_id` method of the robot object, with the ID as
 an argument. You'll need the ID later, so it's best to save it into a variable:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
