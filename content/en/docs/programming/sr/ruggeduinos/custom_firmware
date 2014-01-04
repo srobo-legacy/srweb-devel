@@ -70,6 +70,24 @@ R.wait_start()
 # The rest of your code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+You may wish to use pyserial to communicate with the Ruggeduino, in which case you could open it like so:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import serial
+from sr import *
+
+RUGGEDUINO_ID = "752303138333517171B1"
+
+R = Robot.setup()
+R.ruggeduino_ignore_id( RUGGEDUINO_ID )
+R.init()
+R.wait_start()
+
+ser = serial.Serial( R.ruggeduinos[RUGGEDUINO_ID].serial_dev )
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Refer to the [pyserial documentation](http://pyserial.sourceforge.net/) for more information on how to use pyserial.
+
 [Extension of the SR firmware](/docs/programming/sr/ruggeduinos/custom_firmware#extension) {#extension}
 ------------------------------
 
