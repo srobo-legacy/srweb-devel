@@ -28,6 +28,62 @@ R.wait_start()
 
 The next step depends on whether you are running an extended SR firmware, or a completely custom firmware.
 
+[Extension of the SR firmware](/docs/programming/sr/ruggeduinos/custom_firmware#extension) {#extension}
+------------------------------
+
+If you wish to extend the SR firmware (which can be downloaded
+[here](/resources/kit/ruggeduino-fw.ino) and loaded into the Arduino IDE for
+modification), you can use the following process to integrate your new command
+into the existing interface:
+
+1. Extend the `Ruggeduino` class with an extra method to perform the command. You
+   should lock the Ruggeduino object while receiving the result, in order to
+   ensure that multiple threads can't send conflicting commands at once. You
+   can call the "command" method of the `Ruggeduino` class in order to send the
+   command character - you can send arguments by appending them to the command
+   letter. You can use this example as a template:
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   class CustomisedRuggeduino(Ruggeduino):
+       def do_custom_thing(self): # You can call this method whatever you want
+   
+           with self.lock: # This locks the Ruggeduino object
+   
+               result = self.command("c")
+               # You can choose whichever command letter you want,
+               # but ensure not to use one that is already being used
+               # in the old firmware.
+   
+           return str(result)
+           # You can also use float(result)
+           # to return the result a floating-point number, for example.
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2. Tell the robot which class to use for custom Ruggeduino objects instead of
+   the default. You can do this using the`ruggeduino_set_handler_by_fwver`method to use the firmware version string to tell it which Ruggeduinos to
+   use, or by the ID using the`ruggeduino_set_handler_by_id`method.
+   The firmware version is set to "SRcustom" in the firmware linked to above,
+   but you may set it to any other string. Just be sure that it continues to
+   output the colon after the version string.
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   from sr import *
+   
+   R = Robot.setup()
+   
+   # First argument is firmware version; second is the name of the class:
+   R.ruggeduino_set_handler_by_fwver("SRcustom", CustomisedRuggeduino)
+   # Alternatively, you can set the handler by the ID
+   # R.ruggeduino_set_handler_by_id("752303138333517171B1", CustomisedRuggeduino)
+   
+   R.init()
+   
+   R.wait_start()
+   
+   # The rest of your code
+   
+   # You can then simply call the method you wrote whenever you need it
+   R.ruggeduinos[0].do_custom_thing()
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 [Completely custom firmware](/docs/programming/sr/ruggeduinos/custom_firmware#completely) {#completely}
 ----------------------------
 
@@ -88,58 +144,3 @@ ser = serial.Serial( R.ruggeduinos[RUGGEDUINO_ID].serial_dev )
 
 Refer to the [pyserial documentation](http://pyserial.sourceforge.net/) for more information on how to use pyserial.
 
-[Extension of the SR firmware](/docs/programming/sr/ruggeduinos/custom_firmware#extension) {#extension}
-------------------------------
-
-If you wish to extend the SR firmware (which can be downloaded
-[here](/resources/kit/ruggeduino-fw.ino) and loaded into the Arduino IDE for
-modification), you can use the following process to integrate your new command
-into the existing interface:
-
-1. Extend the `Ruggeduino` class with an extra method to perform the command. You
-   should lock the Ruggeduino object while receiving the result, in order to
-   ensure that multiple threads can't send conflicting commands at once. You
-   can call the "command" method of the `Ruggeduino` class in order to send the
-   command character - you can send arguments by appending them to the command
-   letter. You can use this example as a template:
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   class CustomisedRuggeduino(Ruggeduino):
-       def do_custom_thing(self): # You can call this method whatever you want
-   
-           with self.lock: # This locks the Ruggeduino object
-   
-               result = self.command("c")
-               # You can choose whichever command letter you want,
-               # but ensure not to use one that is already being used
-               # in the old firmware.
-   
-           return str(result)
-           # You can also use float(result)
-           # to return the result a floating-point number, for example.
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-2. Tell the robot which class to use for custom Ruggeduino objects instead of
-   the default. You can do this using the`ruggeduino_set_handler_by_fwver`method to use the firmware version string to tell it which Ruggeduinos to
-   use, or by the ID using the`ruggeduino_set_handler_by_id`method.
-   The firmware version is set to "SRcustom" in the firmware linked to above,
-   but you may set it to any other string. Just be sure that it continues to
-   output the colon after the version string.
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   from sr import *
-   
-   R = Robot.setup()
-   
-   # First argument is firmware version; second is the name of the class:
-   R.ruggeduino_set_handler_by_fwver("SRcustom", CustomisedRuggeduino)
-   # Alternatively, you can set the handler by the ID
-   # R.ruggeduino_set_handler_by_id("752303138333517171B1", CustomisedRuggeduino)
-   
-   R.init()
-   
-   R.wait_start()
-   
-   # The rest of your code
-   
-   # You can then simply call the method you wrote whenever you need it
-   R.ruggeduinos[0].do_custom_thing()
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
