@@ -31,10 +31,39 @@ The next step depends on whether you are running an extended SR firmware, or a c
 [Extension of the SR firmware](/docs/programming/sr/ruggeduinos/custom_firmware#extension) {#extension}
 ------------------------------
 
-If you wish to extend the SR firmware (which can be downloaded
-[here](/resources/kit/ruggeduino-fw.ino) and loaded into the Arduino IDE for
-modification), you can use the following process to integrate your new command
-into the existing interface:
+You may wish to extend the SR firmware with additional functionality.  This will allow you to continue using the commands already provided by the SR firmware (e.g. `digital_read()`), which means any existing robot code you have won't need modifying very much.  When you extend the SR firmware, you'll be adding at least one new command to the firmware.  There are almost limitless possibilities of what your commands may do, but here are some examples to give you an idea:
+
+ * Talk to an SPI or I2C sensor.
+ * Read N input pins at the same instant in time.
+ * Time pulses received from an ultrasound sensor.
+
+To extend the SR firmware, you will need to first download its [source code](/resources/kit/ruggeduino-fw.ino), and edit it in the Arduino IDE.  When the SR ruggeduino python library wants the ruggeduino to run a command, it sends it a single character to tell it which command to run.  You'll find a `switch` statement in the `loop()` function that processes this command character:
+
+<pre><code class="override-lang cpp">switch (selected_command) {
+      case 'a':
+        command_analogue_read();
+        break;
+      case 'r':
+        command_read();
+        break;
+      case 'l':
+        command_write(LOW);
+        break;
+
+ // ... and so on ...
+</code></pre>
+
+For example, you can see in the above that when it receives an "a" character, it calls the `command_analogue_read()` function.  This function does pretty much what it says on the tin: it reads an analogue pin.
+
+You will need to add your own entry into this `switch` statement for your new command.  This will need to be represented by a character that doesn't already appear in the switch statement.  Let's say you chose "c"; your entry would look like this:
+
+<pre><code class="override-lang cpp">switch (selected_command) {
+      case 'c':
+        command_bake_cake();
+        break;
+
+ // ... all the original entries ...
+</code></pre>
 
 1. Extend the `Ruggeduino` class with an extra method to perform the command. You
    should lock the Ruggeduino object while receiving the result, in order to
