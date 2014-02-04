@@ -65,6 +65,8 @@ You will need to add your own entry into this `switch` statement for your new co
  // ... all the original entries ...
 </code></pre>
 
+You would then write your `command_bake_cake()` function.  Your command can read additional data from the serial port if it requires additional information to operate.  It can also write a response back to the host (your Python code).  Have a look at the `command_read()` function to see how to do this.
+
 1. Extend the `Ruggeduino` class with an extra method to perform the command. You
    should lock the Ruggeduino object while receiving the result, in order to
    ensure that multiple threads can't send conflicting commands at once. You
