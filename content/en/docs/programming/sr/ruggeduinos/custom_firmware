@@ -73,6 +73,12 @@ You would then write your `command_bake_cake()` function.  Your command can read
 
 ### Step 2: Extend the `Ruggeduino` class
 
+Your robot's python code will, by default, use a `Ruggeduino` object to communicate with the Ruggeduino.   The object returned to you when you type `R.ruggeduinos[0]` is a `Ruggeduino` instance.  This object knows how to talk to the default command handlers in the SR firmware.
+
+<div class="info" markdown="1">
+Don't worry if you don't know what "object" means -- you can probably blag this without knowing!  If you do want to know about them, you'll find introductions to them all over the web.  You could try [this one](http://www.jesshamrick.com/2011/05/18/an-introduction-to-classes-and-inheritance-in-python/), for example.
+</div>
+
    Extend the `Ruggeduino` class with an extra method to perform the command. You
    should lock the Ruggeduino object while receiving the result, in order to
    ensure that multiple threads can't send conflicting commands at once. You
