@@ -134,33 +134,54 @@ class CustomisedRuggeduino(Ruggeduino):
 
 ### Step 3: Tell the `Robot` to use your extended class
 
-Tell the robot which class to use for custom Ruggeduino objects instead of
-   the default. You can do this using the`ruggeduino_set_handler_by_fwver`method to use the firmware version string to tell it which Ruggeduinos to
-   use, or by the ID using the`ruggeduino_set_handler_by_id`method.
-   The firmware version is set to "SRcustom" in the firmware linked to above,
-   but you may set it to any other string. Just be sure that it continues to
-   output the colon after the version string.
-
+Now that you've extended the `Ruggeduino` class to create your `CustomRuggeduino` class, it's time to tell the `Robot` object about it using the `ruggeduino_set_handler_by_fwver` function:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 from sr import *
 
+# The class that you wrote in step 2
+class CustomRuggeduino(Ruggeduino):
+    def bake_cake(self):
+        with self.lock:
+            self.command("c")
+
 R = Robot.setup()
 
-# First argument is firmware version; second is the name of the class:
+# Register the custom class with the Robot object
 R.ruggeduino_set_handler_by_fwver("SRcustom", CustomisedRuggeduino)
-# Alternatively, you can set the handler by the ID
-# R.ruggeduino_set_handler_by_id("752303138333517171B1", CustomisedRuggeduino)
 
 R.init()
 
 R.wait_start()
 
-# The rest of your code
-
-# You can then simply call the method you wrote whenever you need it
-R.ruggeduinos[0].do_custom_thing()
+# Now you can call your custom function!
+R.ruggeduinos[0].bake_cake()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You're done!  You can now use your custom cake-baking firmware!
+
+
+#### Multiple Ruggeduinos with Extended SR Firmwares
+
+You may wish to use multiple Ruggeduinos with your robot, each supporting a different set of commands.  There are two ways to go about this.
+
+You can change the string "SRCustom" in your firmwares to be something different (but make sure you keep the colon that follows it!), and then change the string you pass to `ruggeduino_set_handler_by_fwver` to suit.  For example, if you change it to be "CakeBaker" in one of your ruggeduinos, but leave it as "SRCustom" in the other, then your enumeration code would become:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+R.ruggeduino_set_handler_by_fwver("SRcustom", CustomisedRuggeduino)
+R.ruggeduino_set_handler_by_fwver("CakeBaker", CakeBakerRuggeduino)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Alternatively, you can set the handling class using the ID of the Ruggeduino.  The Ruggeduino IDs are written to the robot log when you run a program on your robot with your Ruggeduino connected.  Instead of using `ruggeduino_set_handler_by_fwver`, you use `ruggeduino_set_handler_by_id`:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+R.ruggeduino_set_handler_by_id("752303138333517171B1", CustomisedRuggeduino)
+R.ruggeduino_set_handler_by_id("10231028301928310283", CakeBakerRuggeduino)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You will then be able to access your ruggeduino using its ID like so:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+R.ruggeduinos["752303138333517171B1"]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 [Completely custom firmware](/docs/programming/sr/ruggeduinos/custom_firmware#completely) {#completely}
