@@ -79,28 +79,57 @@ Your robot's python code will, by default, use a `Ruggeduino` object to communic
 Don't worry if you don't know what "object" means -- you can probably blag this without knowing!  If you do want to know about them, you'll find introductions to them all over the web.  You could try [this one](http://www.jesshamrick.com/2011/05/18/an-introduction-to-classes-and-inheritance-in-python/), for example.
 </div>
 
-   Extend the `Ruggeduino` class with an extra method to perform the command. You
-   should lock the Ruggeduino object while receiving the result, in order to
-   ensure that multiple threads can't send conflicting commands at once. You
-   can call the "command" method of the `Ruggeduino` class in order to send the
-   command character - you can send arguments by appending them to the command
-   letter. You can use this example as a template:
+You'll need to extend the `Ruggeduino` class, giving it at least one extra method to perform your command.  Start by adding this to your code:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from sr import *
+
 class CustomisedRuggeduino(Ruggeduino):
-    def do_custom_thing(self): # You can call this method whatever you want
+    pass
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        with self.lock: # This locks the Ruggeduino object
+You've just declared a class called `CustomisedRuggeduino` (you will probably want to call it something else that makes more sense in your application).  At the moment, it behaves in exactly the same way as the `Ruggeduino` class.  You now need to add your custom method to it:
 
-            result = self.command("c")
-            # You can choose whichever command letter you want,
-            # but ensure not to use one that is already being used
-            # in the old firmware.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from sr import *
 
-        return str(result)
-        # You can also use float(result)
-        # to return the result a floating-point number, for example.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+class CustomisedRuggeduino(Ruggeduino):
+
+    # Your function for instructing a Ruggeduino to bake a cake
+    def bake_cake(self):
+        with self.lock:
+            self.command("c")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Skipping ahead for a moment: Once we've told your `Robot` object about this `CustomisedRuggeduino` class (which we do in the next step), you will be able to do this:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+R.ruggeduinos[0].bake_cake()
+# and you'll still be able to do this:
+R.ruggeduinos[0].digital_read(3)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#### `with self.lock:`
+
+You'll notice that the code above contains a line that reads:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+with self.lock:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Whenever you call `self.command`, you need to ensure that it is called within a block of code headed by this `with` statement.  This is a tool that makes your code "thread-safe".  If you're not using threads, then you will still need to use it, but it won't affect the behaviour of your program.
+
+#### Responses
+
+The response from your command is returned by the `self.command` function.  Remember that it will be a string, so you will need to convert it as necessary.
+
+If, for example, our cake-baking function on our Ruggeduino responds with the number of cakes that were baked, then we could do this:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+class CustomisedRuggeduino(Ruggeduino):
+
+    def bake_cake(self):
+        with self.lock:
+            resp = self.command("c")
+        return int(resp)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 ### Step 3: Tell the `Robot` to use your extended class
